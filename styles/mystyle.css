@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: arial;
+}
+p{
+    line-height: 2;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+}
+h2{
+    text-align: center;
+}
+
+/*Header*/
+
+header{
+    background-color: #e9b405;
+}
+header img{
+    max-width: 20%;
+}
+.header-flex{
+    display: flex;
+}
+
+/*Main*/
+.about-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    padding: 20px;
+}
