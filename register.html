@@ -3,21 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/mystyle.css">
+    <link rel="stylesheet" href="./styles/register.css">
     <title>Register</title>
 </head>
 <body>
     <header>
-        <div class="main-bar">
+        <div class="header-bar">
             <h1>Pet Salon</h1>
             <nav>
                 <a href="index.html">Home</a>
                 <a href="register.html">Register</a>
             </nav>
         </div>
+        <div class="registered-main">
+            <p class="number-registered" id="numberRegistered"></p>
+        </div>
     </header>
-    <main>
-        <h2>Register</h2>
+    <main class="blue-edges">
+        <div class="main-container">
+            <h2>Register Your Pet</h2>
+            <fieldset class="register-field">
+                <div></div>
+                <label for="Name">Name:</label>
+                <input type="text" name="Name" id="Name">
+                <div></div>
+                <label for="age">Age:</label>
+                <input type="number" name="age" id="age">
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender">
+                    <option value="">---Please Select an Option---</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <label for="breed">Breed:</label>
+                <input type="text" name="breed" id="breed">
+                <label for="photo">Add a photo (Optional)</label>
+                <input type="file">
+                <button type="submit">Submit</button>
+            </fieldset>
+
+            <h2>Currently Registered:</h2>
+            <div id="petBoxes" class="pets-grid">
+                
+                <!--<div class="pet-box">
+                    <h3 id="petName">Luna Borfuna</h3>
+                    <div class="center-img">
+                        <img class="pet-img" src="./img/Luna.jpg" alt="">
+                    </div>
+                    <h4 id="petService">Nail Trim</h4>
+                    <div class="details-grid">
+                        <p>Age:</p>
+                        <p id="petAge">3</p>
+                        <p>Gender:</p>
+                        <p id="petGender">Female</p>
+                        <p>Breed:</p>
+                        <p id="petBreed">Golden Mountain</p>
+                    </div>    
+                </div>-->
+            </div>
+        </div>    
     </main>
     <script src="./scripts/register.js"></script>
 </body>

@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+p{
+    line-height: 2;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+}
+h2,h3{
+    text-align: center;
+    padding: 20px;
+}
+h1{
+    font-size: 60px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/*Header*/
+header{
+    background-color: rgb(152, 181, 207);
+    height: 200px;
+}
+.header-bar{
+    text-align: center;
+    margin-bottom: 60px;
+}
+.header-bar h1{
+    margin-bottom: 10px;
+}
+.header-bar a{
+    margin: 8px;
+    color: black;
+}
+.header-bar a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
+.registered-main{
+    max-width: 80%;
+    text-align: end;
+}
+.number-registered{
+    font-weight: bold;
+    font-size: large;
+}
+/*Main*/
+.main-container{
+    max-width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: grey;
+    padding-bottom: 40px;
+}
+@media (max-width: 1500px){
+    .main-container{
+        max-width: 80%;
+    }
+}
+@media (max-width: 850px){
+    .main-container{
+        max-width: 90%;
+    }
+}
+.register-field{
+
+}
+.blue-edges{
+    background-color: rgb(16, 34, 49);
+}
+/*Pet Boxes*/
+.pets-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    row-gap: 30px;
+}
+@media (max-width: 1200px){
+    .pets-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width: 768px){
+    .pets-grid{
+        grid-template-columns: 100%;
+    }
+}
+.pet-box{
+    background-color: rgb(152, 181, 207);
+    border: 2px solid rgb(0, 134, 211);
+    border-radius: 5%;
+    width: 250px;
+    padding: 20px 20px;
+    margin: 0 auto;
+}
+.pet-box h4{
+    text-align: center;
+    margin: 20px;
+}
+.pet-box p{
+    margin-top: 10;
+}
+.pet-img{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.center-img{
+    text-align: center;
+}
+.details-grid{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
