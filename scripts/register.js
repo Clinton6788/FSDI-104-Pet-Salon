@@ -5,7 +5,7 @@ let pets=[];
 //object literal
 
 let pet1={
-    name:"Frank",
+    name:"Frank Lee",
     age:1,
     gender:"Male",
     service:"Grooming",
@@ -13,7 +13,7 @@ let pet1={
     photo: "./img/Frank.jpg"
 };
 let pet2={
-    name:"Luna",
+    name:"Luna Borfuna",
     age:3,
     gender:"Female",
     service:"Nail Trim",
@@ -21,7 +21,7 @@ let pet2={
     photo:"./img/Luna.jpg"
 };
 let pet3={
-    name:"Chloe",
+    name:"Chloe Cat",
     age:7,
     gender:"Female",
     service:"Bath",
@@ -29,7 +29,7 @@ let pet3={
     photo:"./img/Chloe.jpg"
 };
 let pet4={
-    name:"Freyja",
+    name:"Freyja the Butt",
     age:3,
     gender:"Female",
     service:"Attitude Adjustment",
