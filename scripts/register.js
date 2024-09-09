@@ -33,26 +33,43 @@ function register(){
     let inputService = document.getElementById('txtService').value;
     let inputType = document.getElementById('txtType').value;
     let inputGender= radioValue();
-
-    console.log('register function reads:', inputGender);
-    
-    if(inputGender === null){
-        console.log('fail');
-        return;    
-    }
-
     let fileInput = document.getElementById('imgPhoto');
     let file = fileInput.files[0]; // Get the first file
     
     if (file) {
         let reader = new FileReader();
-        
+
         reader.onloadend = function () {
-            // Create a new Pet object with the photo as a data URL
-            let newPet = new Pet(inputName, inputAge, inputGender, inputBreed, inputService, inputType, reader.result);
-            pets.push(newPet);
-            
-            console.log('Pet registered:', newPet);
+            // Create an image element
+            let img = new Image();
+            img.src = reader.result;
+
+            img.onload = function () {
+                // Set up canvas
+                let canvas = document.getElementById('canvas');
+                let ctx = canvas.getContext('2d');
+                
+                // Calculate the size for a square crop
+                let size = Math.min(img.width, img.height);
+                let x = (img.width - size) / 2;
+                let y = (img.height - size) / 2;
+                
+                // Set canvas size
+                canvas.width = size;
+                canvas.height = size;
+                
+                // Draw the image cropped on the canvas
+                ctx.drawImage(img, x, y, size, size, 0, 0, size, size);
+                
+                // Get the cropped image data URL
+                let croppedImageUrl = canvas.toDataURL('image/jpeg'); // You can specify 'image/png' or 'image/jpeg'
+
+                // Create a new Pet object with the cropped image
+                let newPet = new Pet(inputName, inputAge, inputGender, inputBreed, inputService, inputType, croppedImageUrl);
+                pets.push(newPet);
+
+                console.log('Pet registered with cropped image:', newPet);
+            };
         };
 
         // Read the file as a data URL
@@ -65,6 +82,8 @@ function register(){
         console.log('Pet registered without photo:', newPet);
     }
 }
+
+
 function testty(){
 console.log(inputName.value);
 console.log(inputAge.value);
