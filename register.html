@@ -26,20 +26,20 @@
                 <legend>Pet information</legend>
                 <div class="sub-form">
                     <div class="form-control">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" id="name">
+                        <label for="txtName">Name:</label>
+                        <input type="text" name="name" id="txtName">
                     </div>    
                     <div class="form-control">
-                        <label for="age">Age:</label>
-                        <input type="number" name="age" id="age">
+                        <label for="txtAge">Age:</label>
+                        <input type="number" name="age" id="txtAge">
                     </div>
                     <div class="form-control">
-                        <label for="breed">Breed:</label>
-                        <input type="text" name="breed" id="breed">
+                        <label for="txtBreed">Breed:</label>
+                        <input type="text" name="breed" id="txtBreed">
                     </div>
                     <div class="form-control">
-                        <label for="service">Service</label>
-                        <select name="service" id="service">
+                        <label for="txtService">Service</label>
+                        <select name="service" id="txtService">
                             <option value="">---Please select an option---</option>
                             <option value="grooming">Grooming</option>
                             <option value="nails">Nail Trim</option>
@@ -47,26 +47,36 @@
                             <option value="attitude">Attitude Adjustment</option>
                         </select>
                     </div>
+                    <div class="form-control">
+                        <label for="txtType">Type</label>
+                        <select id="txtType">
+                            <option value="">---Please select an option---</option>
+                            <option value="cat">Cat</option>
+                            <option value="dog">Dog</option>
+                            <option value="lizard">Lizard</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
                     <div class="form-radio">
                         <legend>Gender:</legend>
                         <div class="form-radio-sub">
                             <div>
-                                <input id="male" name="gender" value="male" type="radio">
+                                <input name="gender" id="male" value="male" type="radio">
                                 <label for="male">Male</label>
                             </div>
                             <div>
-                                <input id="female" name="gender" value="female" type="radio">
+                                <input name="gender" id="female" value="female" type="radio">
                                 <label for="female">Female</label>
                             </div>
                         </div>
                     </div>
                 
                     <div class="form-img">
-                        <label for="photo">Add a photo:</label>
-                        <input name="photo" id="photo" type="file" accept="image/jpg">
+                        <label for="imgPhoto">Add a photo:</label>
+                        <input name="photo" id="imgPhoto" type="file" accept="image/jpg">
                     </div>
                 </div>
-                <button class="submit-btn" type="submit">Submit</button>
+                <button onclick="register()" class="submit-btn" type="submit">Submit</button>
             </fieldset>
 
             <h2>Currently Registered:</h2>

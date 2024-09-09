@@ -114,6 +114,9 @@ header{
     display: flex;
     justify-content: space-between;
 }
+.form-radio input{
+    border: 10px solid red;
+}
 @media (max-width: 768px){
     .form-radio{
         width: 100%;
