@@ -15,16 +15,34 @@ function Pet(name,age,gender,breed,service,type,photo){
 
 function radioValue() {
     const radios = document.getElementsByName('gender');
-    console.log('Radios:', radios);
     for (const radio of radios) {
         console.log('Radio:', radio, 'Checked:', radio.checked, 'Value:', radio.value);
         if (radio.checked) {
             return radio.value;
         }
     }
-    console.log('No radio button is selected.');
     return null;
 }
+function isValid(pet){
+    let validation = true;
+    if(pet.name==""){
+        validation=false;
+    }else if(pet.age==""){
+        validation=false;
+    }else if(pet.gender==""){
+        validation=false;
+    }else if(pet.breed==""){
+        validation=false;
+    }else if(pet.service==""){
+        validation=false;
+    }else if(pet.type==""){
+        validation=false;
+    }
+
+    return validation;
+    
+}
+
 
 function register(){
     let inputName = document.getElementById('txtName').value;
@@ -36,7 +54,7 @@ function register(){
     let inputPhoto = document.getElementById('imgPhoto');
     let file = inputPhoto.files[0];
     
-    let formFields=[inputName,inputAge,inputBreed,inputService,inputType,inputGender]
+    //let formFields=[inputName,inputAge,inputBreed,inputService,inputType,inputGender]
     /*if(formFields ===""||formFields === null){
         console.log("error message reading");
 
@@ -66,12 +84,14 @@ function register(){
                 // With Image
                 let newPet = new Pet(inputName, inputAge, inputGender, inputBreed, inputService, inputType, croppedImageUrl);
                 pets.push(newPet);
-
+                
+                petsDisplay()
                 console.log('Pet registered with cropped image:', newPet);
             };
         };
         reader.readAsDataURL(file);
-    } else {  // Without image ----CHANGE to stock images (if functions to det pet)
+    } else {  
+        // Without image ----CHANGE to stock images (if functions to det pet)
         
         let newPet = new Pet(inputName, inputAge, inputGender, inputBreed, inputService, inputType, null);
         pets.push(newPet);
@@ -85,6 +105,7 @@ function register(){
     document.getElementById('txtType').value = "";
     document.getElementById('male').checked = false;
     document.getElementById('female').checked = false;
+    document.getElementById("imgPhoto").value = "";
     //document.getElementsByName("gender").status = ""
     //document.getElementById('imgPhoto')
     // NEED TO RESET PHOTO
@@ -92,7 +113,6 @@ function register(){
 }  
 
 let pet1={
-    name:"Frank",
     name:"Frank Lee",
     age:1,
     gender:"Male",
@@ -101,7 +121,6 @@ let pet1={
     photo: "./img/Frank.jpg"
 };
 let pet2={
-    name:"Luna",
     name:"Luna Borfuna",
     age:3,
     gender:"Female",
@@ -110,7 +129,6 @@ let pet2={
     photo:"./img/Luna.jpg"
 };
 let pet3={
-    name:"Chloe",
     name:"Chloe Cat",
     age:7,
     gender:"Female",
@@ -119,7 +137,6 @@ let pet3={
     photo:"./img/Chloe.jpg"
 };
 let pet4={
-    name:"Freyja",
     name:"Freyja the Butt",
     age:3,
     gender:"Female",
@@ -129,13 +146,6 @@ let pet4={
 }
 //Push pets into array
 pets.push(pet1,pet2,pet3,pet4)
-
-
-
-
-
-
-
 
 
 function init(){

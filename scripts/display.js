@@ -21,3 +21,9 @@ function petsDisplay(){
         document.getElementById("numberRegistered").innerHTML="Currently Registered: " + pets.length
     }
 }
+
+function displayRows(){
+    /*Get tbody, clear tbody, travel array (for), create template row(row.innerhtml= tr,info)*/
+    let petRows=document.getElementById("petRows")
+    
+}
