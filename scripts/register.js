@@ -1,18 +1,5 @@
 console.log("Register");
 
-let pets=[];
-
-//create constructor
-function Pet(name,age,gender,breed,service,type,photo){
-    this.name=name;
-    this.age=age;
-    this.gender=gender;
-    this.breed=breed;
-    this.service=service;
-    this.type=type;
-    this.photo=photo;
-}
-
 function radioValue() {
     const radios = document.getElementsByName('gender');
     for (const radio of radios) {
@@ -23,6 +10,7 @@ function radioValue() {
     }
     return null;
 }
+
 function isValid(pet){
     let validation = true;
     if(pet.name==""){
@@ -38,9 +26,7 @@ function isValid(pet){
     }else if(pet.type==""){
         validation=false;
     }
-
-    return validation;
-    
+    return validation;   
 }
 
 function test1(){
@@ -96,7 +82,7 @@ function register(){
                 let croppedImageUrl = canvas.toDataURL('image/jpeg');
 
                 // With Image
-                let newPet = new Pet(inputName, inputAge, inputGender, inputBreed, inputService, inputType, croppedImageUrl);
+                let newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, croppedImageUrl);
                 pets.push(newPet);
                 
                 petsDisplay()
@@ -107,11 +93,12 @@ function register(){
     } else {  
         // Without image ----CHANGE to stock images (if functions to det pet)
         
-        let newPet = new Pet(inputName, inputAge, inputGender, inputBreed, inputService, inputType, null);
+        let newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, null);
         pets.push(newPet);
         
         console.log('Pet registered without photo:', newPet);
     }
+
     document.getElementById('txtName').value = "";
     document.getElementById('txtAge').value = "";
     document.getElementById('txtBreed').value = "";
@@ -120,54 +107,14 @@ function register(){
     document.getElementById('male').checked = false;
     document.getElementById('female').checked = false;
     document.getElementById("imgPhoto").value = "";
-    //document.getElementsByName("gender").status = ""
-    //document.getElementById('imgPhoto')
-    // NEED TO RESET PHOTO
+
     petsDisplay();
 }  
 
-let pet1={
-    name:"Frank Lee",
-    age:1,
-    gender:"Male",
-    service:"Grooming",
-    breed:"Bernedoodle",
-    type:"Dog",
-    photo: "./img/Frank.jpg"
-};
-let pet2={
-    name:"Luna Borfuna",
-    age:3,
-    gender:"Female",
-    service:"Nail Trim",
-    breed:"Golden Mountain",
-    type:"Dog",
-    photo:"./img/Luna.jpg"
-};
-let pet3={
-    name:"Chloe Cat",
-    age:7,
-    gender:"Female",
-    service:"Bath",
-    breed:"Shorthair",
-    type:"Cat",
-    photo:"./img/Chloe.jpg"
-};
-let pet4={
-    name:"Freyja the Butt",
-    age:3,
-    gender:"Female",
-    service:"Attitude Adjustment",
-    breed:"Shorthair",
-    type:"Cat",
-    photo:"./img/Freyja.jpg"
-}
 
-pets.push(pet1,pet2,pet3,pet4)
 
 function petsDisplay(){
-    document.getElementById("petBoxes").i=""
-    console.log("hi");
+    document.getElementById("petBoxes").innerHTML=null;
     
     console.log(pets.length)
     for(let i=0;i<pets.length;i++){
@@ -195,15 +142,5 @@ function petsDisplay(){
 
 function init(){
     petsDisplay();
-    displayRows();
 }
 window.onload=init;
-// function averageAges(){
-//     let sum=0;
-//     for(let i=0;i<pets.length;i++){
-//         sum += pets[i].age;
-//     }
-//     let average = sum/pets.length;
-//     console.log(average);
-    
-// }

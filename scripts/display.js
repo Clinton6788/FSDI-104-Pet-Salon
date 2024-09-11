@@ -1,13 +1,12 @@
-function init(){
-    petsDisplay();
-}
 
 function displayRows(){
     /*Get tbody, clear tbody, travel array (for), create template row(row.innerhtml= tr,info)*/
-    let petRows=document.getElementById("petRows");
-    petRows="";
+    console.log(pets.length);
+    
+    document.getElementById("petRows").innerHTML=null;
+
     for(let i=0;i<pets.length;i++){
-        petRows+=`
+        document.getElementById("petRows").innerHTML+=`
         <tr>
             <td>${pets[i].name}</td>
             <td>${pets[i].age}</td>
@@ -15,9 +14,13 @@ function displayRows(){
             <td>${pets[i].breed}</td>
             <td>${pets[i].service}</td>
             <td>${pets[i].type}</td>
+            <td><button>Delete</button></td>
         </tr>`
     }
 }
 function init(){
     displayRows();
+    console.log("init");
+    
 }
+window.onload=init;
