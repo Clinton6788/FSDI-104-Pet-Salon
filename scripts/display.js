@@ -1,29 +1,23 @@
-function petsDisplay(){
-    document.getElementById("petBoxes").innerHTML=""
-    console.log(pets.length)
-    for(let i=0;i<pets.length;i++){
-        document.getElementById("petBoxes").innerHTML+=`
-        <div class="pet-box">
-            <div class="center-img">
-                <img class="pet-img" src="${pets[i].photo}" alt="">
-            </div>
-            <h3>${pets[i].name}, ${pets[i].age} year(s)</h3>
-            <div class="details-grid">
-                <p>Gender:</p>
-                <p>${pets[i].gender}</p>
-                <p>Breed:</p>
-                <p>${pets[i].breed}</p>
-                <p>Service:</p>
-                <p>${pets[i].service}</p>
-            </div>    
-        </div>`
-
-        document.getElementById("numberRegistered").innerHTML="Currently Registered: " + pets.length
-    }
+function init(){
+    petsDisplay();
 }
 
 function displayRows(){
     /*Get tbody, clear tbody, travel array (for), create template row(row.innerhtml= tr,info)*/
-    let petRows=document.getElementById("petRows")
-    
+    let petRows=document.getElementById("petRows");
+    petRows="";
+    for(let i=0;i<pets.length;i++){
+        petRows+=`
+        <tr>
+            <td>${pets[i].name}</td>
+            <td>${pets[i].age}</td>
+            <td>${pets[i].gender}</td>
+            <td>${pets[i].breed}</td>
+            <td>${pets[i].service}</td>
+            <td>${pets[i].type}</td>
+        </tr>`
+    }
+}
+function init(){
+    displayRows();
 }

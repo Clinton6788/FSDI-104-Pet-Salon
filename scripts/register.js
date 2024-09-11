@@ -43,6 +43,20 @@ function isValid(pet){
     
 }
 
+function test1(){
+    let inputName = document.getElementById('txtName').value;
+    let inputAge = document.getElementById('txtAge').value;
+    let inputBreed = document.getElementById('txtBreed').value;
+    let inputService = document.getElementById('txtService').value;
+    let inputType = document.getElementById('txtType').value;
+    let inputGender= document.querySelector('input[name="gender"]:checked');
+    console.log(inputGender.value);
+
+    let newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, null);
+        pets.push(newPet);
+    console.log(newPet);
+    
+}
 
 function register(){
     let inputName = document.getElementById('txtName').value;
@@ -50,7 +64,7 @@ function register(){
     let inputBreed = document.getElementById('txtBreed').value;
     let inputService = document.getElementById('txtService').value;
     let inputType = document.getElementById('txtType').value;
-    let inputGender= radioValue();
+    let inputGender= document.querySelector('input[name="gender"]:checked');
     let inputPhoto = document.getElementById('imgPhoto');
     let file = inputPhoto.files[0];
     
@@ -118,6 +132,7 @@ let pet1={
     gender:"Male",
     service:"Grooming",
     breed:"Bernedoodle",
+    type:"Dog",
     photo: "./img/Frank.jpg"
 };
 let pet2={
@@ -126,6 +141,7 @@ let pet2={
     gender:"Female",
     service:"Nail Trim",
     breed:"Golden Mountain",
+    type:"Dog",
     photo:"./img/Luna.jpg"
 };
 let pet3={
@@ -133,7 +149,8 @@ let pet3={
     age:7,
     gender:"Female",
     service:"Bath",
-    breed:"Shorthair Cat",
+    breed:"Shorthair",
+    type:"Cat",
     photo:"./img/Chloe.jpg"
 };
 let pet4={
@@ -141,15 +158,44 @@ let pet4={
     age:3,
     gender:"Female",
     service:"Attitude Adjustment",
-    breed:"Cat",
+    breed:"Shorthair",
+    type:"Cat",
     photo:"./img/Freyja.jpg"
 }
-//Push pets into array
+
 pets.push(pet1,pet2,pet3,pet4)
 
+function petsDisplay(){
+    document.getElementById("petBoxes").i=""
+    console.log("hi");
+    
+    console.log(pets.length)
+    for(let i=0;i<pets.length;i++){
+        document.getElementById("petBoxes").innerHTML+=`
+        <div class="pet-box">
+            <div class="center-img">
+                <img class="pet-img" src="${pets[i].photo}" alt="">
+            </div>
+            <h3>${pets[i].name}, ${pets[i].age} year(s)</h3>
+            <div class="details-grid">
+                <p>Gender:</p>
+                <p>${pets[i].gender}</p>
+                <p>Breed:</p>
+                <p>${pets[i].breed}</p>
+                <p>Service:</p>
+                <p>${pets[i].service}</p>
+                <p>Type:</p>
+                <p>${pets[i].type}</p>
+            </div>    
+        </div>`
+
+        document.getElementById("numberRegistered").innerHTML="Currently Registered: " + pets.length
+    }
+}
 
 function init(){
-    petsDisplay()
+    petsDisplay();
+    displayRows();
 }
 window.onload=init;
 // function averageAges(){
