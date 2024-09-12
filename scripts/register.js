@@ -13,21 +13,12 @@ function radioValue() {
 
 function isValid(pet){
     let validation = true;
-    if(pet.name==""){
-        validation=false;
-    }else if(pet.age==""){
-        validation=false;
-    }else if(pet.gender==""){
-        validation=false;
-    }else if(pet.breed==""){
-        validation=false;
-    }else if(pet.service==""){
-        validation=false;
-    }else if(pet.type==""){
+    if(pet.name==""||pet.age==""||pet.breed==""){
         validation=false;
     }
-    return validation;   
+    return validation;
 }
+
 
 function test1(){
     let inputName = document.getElementById('txtName').value;
@@ -58,7 +49,13 @@ function register(){
     /*if(formFields ===""||formFields === null){
         console.log("error message reading");
 
-    }else*/ if (file) {
+    }else*/ 
+    
+
+    if(isValid(validation)){
+        console.log("valid");
+        
+    }else if (file) {
         let reader = new FileReader();
 
         reader.onloadend = function () {

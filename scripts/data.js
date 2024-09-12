@@ -46,6 +46,6 @@ let pet4={
     breed:"Shorthair",
     type:"Cat",
     photo:"./img/Freyja.jpg"
-}
+};
 
-pets.push(pet1,pet2,pet3,pet4)
+pets.push(pet1,pet2,pet3,pet4);
