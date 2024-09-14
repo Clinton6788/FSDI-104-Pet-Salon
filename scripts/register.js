@@ -1,101 +1,22 @@
-console.log("Register");
+import { loadPetsFromLocalStorage, savePetsToLocalStorage, Pet } from './utilities.js';
 
-function radioValue() {
-    const radios = document.getElementsByName('gender');
-    for (const radio of radios) {
-        console.log('Radio:', radio, 'Checked:', radio.checked, 'Value:', radio.value);
-        if (radio.checked) {
-            return radio.value;
-        }
+let pets = loadPetsFromLocalStorage();
+
+function validateForm() {
+    const name = document.getElementById('txtName').value.trim();
+    const age = document.getElementById('txtAge').value.trim();
+    const breed = document.getElementById('txtBreed').value.trim();
+    const service = document.getElementById('txtService').value.trim();
+    const type = document.getElementById('txtType').value.trim();
+    const gender = document.querySelector('input[name="gender"]:checked');
+
+    if (name === '' || age === '' || breed === '' || service === '' || type === '' || !gender) {
+        alert('All fields are required.');
+        return false;
     }
-    return null;
+    return true;
 }
-
-function isValid(pet){
-    let validation = true;
-    if(pet.name==""||pet.age==""||pet.breed==""){
-        validation=false;
-    }
-    return validation;
-}
-
-
-function test1(){
-    let inputName = document.getElementById('txtName').value;
-    let inputAge = document.getElementById('txtAge').value;
-    let inputBreed = document.getElementById('txtBreed').value;
-    let inputService = document.getElementById('txtService').value;
-    let inputType = document.getElementById('txtType').value;
-    let inputGender= document.querySelector('input[name="gender"]:checked');
-    console.log(inputGender.value);
-
-    let newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, null);
-        pets.push(newPet);
-    console.log(newPet);
-    
-}
-
-function register(){
-    let inputName = document.getElementById('txtName').value;
-    let inputAge = document.getElementById('txtAge').value;
-    let inputBreed = document.getElementById('txtBreed').value;
-    let inputService = document.getElementById('txtService').value;
-    let inputType = document.getElementById('txtType').value;
-    let inputGender= document.querySelector('input[name="gender"]:checked');
-    let inputPhoto = document.getElementById('imgPhoto');
-    let file = inputPhoto.files[0];
-    
-    //let formFields=[inputName,inputAge,inputBreed,inputService,inputType,inputGender]
-    /*if(formFields ===""||formFields === null){
-        console.log("error message reading");
-
-    }else*/ 
-    
-
-    if(isValid(validation)){
-        console.log("valid");
-        
-    }else if (file) {
-        let reader = new FileReader();
-
-        reader.onloadend = function () {
-            let img = new Image();
-            img.src = reader.result;
-
-            img.onload = function () {
-                let canvas = document.getElementById('canvas');
-                let ctx = canvas.getContext('2d');
-                
-                // Crop to 1:1 math
-                let size = Math.min(img.width, img.height);
-                let x = (img.width - size) / 2;
-                let y = (img.height - size) / 2;
-                
-                canvas.width = size;
-                canvas.height = size;
-                
-                ctx.drawImage(img, x, y, size, size, 0, 0, size, size);
-                
-                let croppedImageUrl = canvas.toDataURL('image/jpeg');
-
-                // With Image
-                let newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, croppedImageUrl);
-                pets.push(newPet);
-                
-                petsDisplay()
-                console.log('Pet registered with cropped image:', newPet);
-            };
-        };
-        reader.readAsDataURL(file);
-    } else {  
-        // Without image ----CHANGE to stock images (if functions to det pet)
-        
-        let newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, null);
-        pets.push(newPet);
-        
-        console.log('Pet registered without photo:', newPet);
-    }
-
+function clearForm(){
     document.getElementById('txtName').value = "";
     document.getElementById('txtAge').value = "";
     document.getElementById('txtBreed').value = "";
@@ -104,40 +25,101 @@ function register(){
     document.getElementById('male').checked = false;
     document.getElementById('female').checked = false;
     document.getElementById("imgPhoto").value = "";
+}
 
-    petsDisplay();
-}  
+export function register() {
+    if (!validateForm()) {
+        return;
+    }
 
+    const inputName = document.getElementById('txtName').value;
+    const inputAge = document.getElementById('txtAge').value;
+    const inputBreed = document.getElementById('txtBreed').value;
+    const inputService = document.getElementById('txtService').value;
+    const inputType = document.getElementById('txtType').value;
+    const inputGender = document.querySelector('input[name="gender"]:checked');
+    const inputPhoto = document.getElementById('imgPhoto');
+    const file = inputPhoto.files[0];
 
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            const img = new Image();
+            img.src = reader.result;
+            img.onload = function () {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+                const size = Math.min(img.width, img.height);
+                const x = (img.width - size) / 2;
+                const y = (img.height - size) / 2;
+                canvas.width = size;
+                canvas.height = size;
+                ctx.drawImage(img, x, y, size, size, 0, 0, size, size);
+                const croppedImageUrl = canvas.toDataURL('image/jpeg');
 
-function petsDisplay(){
-    document.getElementById("petBoxes").innerHTML=null;
-    
-    console.log(pets.length)
-    for(let i=0;i<pets.length;i++){
-        document.getElementById("petBoxes").innerHTML+=`
-        <div class="pet-box">
-            <div class="center-img">
-                <img class="pet-img" src="${pets[i].photo}" alt="">
-            </div>
-            <h3>${pets[i].name}, ${pets[i].age} year(s)</h3>
-            <div class="details-grid">
-                <p>Gender:</p>
-                <p>${pets[i].gender}</p>
-                <p>Breed:</p>
-                <p>${pets[i].breed}</p>
-                <p>Service:</p>
-                <p>${pets[i].service}</p>
-                <p>Type:</p>
-                <p>${pets[i].type}</p>
-            </div>    
-        </div>`
-
-        document.getElementById("numberRegistered").innerHTML="Currently Registered: " + pets.length
+                const newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, croppedImageUrl);
+                pets.push(newPet);
+                savePetsToLocalStorage(pets);
+                petsDisplay();
+                clearForm();
+            };
+        };
+        reader.readAsDataURL(file);
+    } else {
+        const newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, null);
+        pets.push(newPet);
+        savePetsToLocalStorage(pets);
+        petsDisplay();
+        clearForm();
     }
 }
 
-function init(){
+export function petsDisplay() {
+    const petBoxes = document.getElementById("petBoxes");
+    petBoxes.innerHTML = '';
+
+    for (let i = 0; i < pets.length; i++) {
+        petBoxes.innerHTML += `
+            <div class="pet-box">
+                <div class="center-img">
+                    <img class="pet-img" src="${pets[i].photo || 'default-image.jpg'}" alt="">
+                </div>
+                <h3>${pets[i].name}, ${pets[i].age} year(s)</h3>
+                <div class="details-grid">
+                    <p>Gender:</p>
+                    <p>${pets[i].gender}</p>
+                    <p>Breed:</p>
+                    <p>${pets[i].breed}</p>
+                    <p>Service:</p>
+                    <p>${pets[i].service}</p>
+                    <p>Type:</p>
+                    <p>${pets[i].type}</p>
+                </div>    
+            </div>`;
+    }
+    document.getElementById("numberRegistered").innerHTML = "Currently Registered: " + pets.length;
+}
+
+export function startingPets() {
+    const defaultPets = [
+        new Pet("Frank Lee", 1, "Male", "Bernedoodle", "Grooming", "Dog", "./img/Frank.jpg"),
+        new Pet("Luna Borfuna", 3, "Female", "Golden Mountain", "Nail Trim", "Dog", "./img/Luna.jpg"),
+        new Pet("Chloe Cat", 7, "Female", "Shorthair", "Bath", "Cat", "./img/Chloe.jpg"),
+        new Pet("Freyja the Butt", 3, "Female", "Shorthair", "Attitude Adjustment", "Cat", "./img/Freyja.jpg")
+    ];
+    pets.push(...defaultPets);
+}
+
+function init() {
+    if (pets.length === 0) {
+        startingPets(); // Add default pets if no pets are in local storage
+    }
     petsDisplay();
 }
-window.onload=init;
+
+document.getElementById('registerForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    register(); 
+});
+
+window.addEventListener('load', init);

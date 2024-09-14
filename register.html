@@ -23,7 +23,7 @@
     <main class="blue-edges">
         <div class="main-container">
             <h2>Register Your Pet</h2>
-            <fieldset id="registerForm" class="register-field">
+            <form id="registerForm" class="register-field">
                 <legend>Pet information</legend>
                 <div class="sub-form">
                     <div class="form-control">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-control">
                         <label for="txtType">Type:</label>
-                        <select id="txtType">
+                        <select name="type" id="txtType">
                             <option value="">---Please select an option---</option>
                             <option value="cat">Cat</option>
                             <option value="dog">Dog</option>
@@ -77,8 +77,8 @@
                         <input name="photo" id="imgPhoto" type="file" accept="image/jpg">
                     </div>
                 </div>
-                <button onclick="register()" class="submit-btn" type="submit">Submit</button>
-            </fieldset>
+                <button class="submit-btn" type="submit">Submit</button>
+            </form>
             <canvas id="canvas" style="display:none;"></canvas>
             <h2>Currently Registered:</h2>
             <div id="petBoxes" class="pets-grid">
@@ -101,8 +101,7 @@
             </div>
         </div>    
     </main>
-    <script src="./scripts/data.js"></script>
-    <script src="./scripts/register.js"></script>
-    
+    <script type="module" src="./scripts/register.js"></script>
+    <script type="module" src="./scripts/admin.js"></script>
 </body>
 </html>
