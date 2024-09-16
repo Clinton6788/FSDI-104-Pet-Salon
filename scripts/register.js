@@ -66,7 +66,27 @@ export function register() {
         };
         reader.readAsDataURL(file);
     } else {
-        const newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, null);
+        const getImagePath = (inputType) => {
+            let imagePath;
+            
+            switch (inputType) {
+                case 'dog':
+                    imagePath = './img/genDog.jpg';
+                    break;
+                case 'cat':
+                    imagePath = './img/genCat.jpg';
+                    break;
+                case 'bird':
+                    imagePath = './img/genBird.jpg';
+                    break;
+                case 'other':
+                    imagePath = './img/genOther.jpg';
+                    break;
+            }
+            return imagePath;
+        };
+        const imagePath = getImagePath(inputType);
+        const newPet = new Pet(inputName, inputAge, inputGender.value, inputBreed, inputService, inputType, imagePath);
         pets.push(newPet);
         savePetsToLocalStorage(pets);
         petsDisplay();
