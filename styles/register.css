@@ -206,24 +206,3 @@ header{
     display: grid;
     grid-template-columns: 40% 60%;
 }
-.highlight{
-    border-left:10px solid green;
-}
-.admin-container{
-    max-width: 80%;
-    margin: 0 auto;
-    background-color: lightgray;
-    min-height: 900px; /*change later*/
-}
-.search{
-    display: flex;
-}
-.search input{
-    border: 1px solid darkgrey;
-    width: 300px;
-    margin: 0 20px 0 30px;
-}
-.search button{
-    width: 80px;
-    border-radius: 5px;
-}

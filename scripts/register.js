@@ -1,7 +1,10 @@
+//Load pets array
 import { loadPetsFromLocalStorage, savePetsToLocalStorage, Pet } from './utilities.js';
 
 let pets = loadPetsFromLocalStorage();
 
+
+//Form handling
 function validateForm() {
     const name = document.getElementById('txtName').value.trim();
     const age = document.getElementById('txtAge').value.trim();
@@ -27,6 +30,8 @@ function clearForm(){
     document.getElementById("imgPhoto").value = "";
 }
 
+
+//Register and push new pets
 export function register() {
     if (!validateForm()) {
         return;
@@ -94,6 +99,8 @@ export function register() {
     }
 }
 
+
+//Display Pets
 export function petsDisplay() {
     const petBoxes = document.getElementById("petBoxes");
     petBoxes.innerHTML = '';
@@ -120,6 +127,8 @@ export function petsDisplay() {
     document.getElementById("numberRegistered").innerHTML = "Currently Registered: " + pets.length;
 }
 
+
+//Pre-loaded pets
 export function startingPets() {
     const defaultPets = [
         new Pet("Frank Lee", 1, "Male", "Bernedoodle", "Grooming", "Dog", "./img/Frank.jpg"),
@@ -130,16 +139,20 @@ export function startingPets() {
     pets.push(...defaultPets);
 }
 
+
+//OnLoad
 function init() {
     if (pets.length === 0) {
         startingPets(); // Add default pets if no pets are in local storage
     }
     petsDisplay();
+
+    document.getElementById('registerForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        register(); 
+    });
 }
 
-document.getElementById('registerForm').addEventListener('submit', (event) => {
-    event.preventDefault();
-    register(); 
-});
+
 
 window.addEventListener('load', init);
