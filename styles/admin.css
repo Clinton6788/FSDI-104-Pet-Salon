@@ -18,10 +18,21 @@ h2,h3{
     text-align: center;
     padding: 20px;
 }
+h4{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: medium;
+    color: black;
+}
+h3{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: larger;
+    color: black;
+}
 h1{
     font-size: 50px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: bold;
 }
 /*Header*/
 header{
@@ -129,4 +140,34 @@ header{
 .small-inputs-space{
     display: flex;
     justify-content: space-between;
+}
+/*Footer*/
+.footer{
+    min-height: 150px;
+    background-color: rgb(152, 181, 207);
+}
+.footer p{
+    margin: 0;
+}
+.footer-container{
+    padding-top: 30px;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
+.contact{
+    width: 20%;
+}
+.established{
+    width: 20%;
+}
+.follow{
+    text-align: right;
+    width: 20%;
+}
+.icons i{
+    margin: 10px 0 0 10px;
+
 }

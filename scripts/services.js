@@ -45,19 +45,19 @@ function submitNewService(){
     const newService = new Service(servicesName, servicesDesc, servicesCost)
     services.push(newService);
     saveServicesToLocalStorage(services)
-    $('input.services-form').val("");
-    $('textarea.services-form').val("");
+    $('.small-inputs-space input').val("");
+    $('.services-form textarea').val("");
     console.log(servicesName);
     console.log('submit function');
-    
+    adminServicesDisplay();
 };
 
 //Clear Form
-function clearForm() {
-    $('#servicesName').val('');
-    $('#servicesDesc').val('');
-    $('#servicesCost').val('');
-}
+// function clearForm() {
+//     $('#servicesName').val('');
+//     $('#servicesDesc').val('');
+//     $('#servicesCost').val('');
+// }
 
 //Display current Services on ADMIN
 function adminServicesDisplay(){
@@ -71,21 +71,47 @@ function adminServicesDisplay(){
                 <td>$${services[i].cost}</td>
                 <td><button class="btn btn-sm btn-danger" onclick="deleteService(${i})">Delete</button></td>
             </tr>`;
-            console.log(services[i].name);
+            //console.log(services[i].name);
             
     }
-    console.log('services display');
+    //console.log('services display');
     
     table.html(rows);
 }
 
+//Delete Service
+function deleteService(serviceID) {
+    //console.log("Delete");
+    let rowToRemove = $('#serviceID');
+    if (rowToRemove) {
+        rowToRemove.remove();
+    } else {
+        console.error("Service with ID", serviceID, "not found.");
+    }
+
+    services.splice(serviceID, 1);
+    saveServicesToLocalStorage(services);
+    adminServicesDisplay();
+}
+
+//Load services to Registration
+function servicesDropDown(){
+    let dropDown = "";
+
+    for(let i=0;i<services.length;i++){
+        dropDown +=`
+        <option value="${services[i].name}">${services[i].name} --- $${services[i].cost}</option>`
+    };
+    $('#txtService').append(dropDown);
+};
 
 //OnLoad
 function init(){
-    console.log('services');
+    //console.log('services');
     loadServicesFromLocalStorage();
     adminServicesDisplay();
     $('#submitServicesBtn').on('click',submitNewService);
+    servicesDropDown();
 };
 
 window.onload = init;

@@ -27,7 +27,7 @@ function displayRows() {
 }
 
 function deletePet(petID) {
-    console.log("Delete");
+    //console.log("Delete");
     let rowToRemove = document.getElementById(petID);
     if (rowToRemove) {
         rowToRemove.remove();
@@ -68,7 +68,7 @@ document.getElementById("txtSearch").addEventListener("input", search);
 //onLoad
 function init() {
     displayRows();
-    console.log("Init");
+    //console.log("Init");
 }
 
 window.addEventListener('load', init);

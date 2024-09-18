@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/register.css">
+    <script src="https://kit.fontawesome.com/30aa77e7d0.js" crossorigin="anonymous"></script>
     <title>Register</title>
 </head>
 <body>
@@ -28,29 +29,25 @@
                 <legend>Pet information</legend>
                 <div class="sub-form">
                     <div class="form-control">
-                        <label for="txtName">Name:</label>
+                        <label for="txtName">* Name:</label>
                         <input type="text" name="name" id="txtName">
                     </div>    
                     <div class="form-control">
-                        <label for="txtAge">Age:</label>
+                        <label for="txtAge">* Age:</label>
                         <input type="number" name="age" id="txtAge">
                     </div>
                     <div class="form-control">
-                        <label for="txtBreed">Breed:</label>
+                        <label for="txtBreed">* Breed:</label>
                         <input type="text" name="breed" id="txtBreed">
                     </div>
                     <div class="form-control">
-                        <label for="txtService">Service:</label>
+                        <label for="txtService">* Service:</label>
                         <select name="service" id="txtService">
                             <option value="">---Please select an option---</option>
-                            <option value="grooming">Grooming</option>
-                            <option value="nails">Nail Trim</option>
-                            <option value="bath">Bath</option>
-                            <option value="attitude">Attitude Adjustment</option>
                         </select>
                     </div>
                     <div class="form-control">
-                        <label for="txtType">Type:</label>
+                        <label for="txtType">* Type:</label>
                         <select name="type" id="txtType">
                             <option value="">---Please select an option---</option>
                             <option value="cat">Cat</option>
@@ -60,7 +57,7 @@
                         </select>
                     </div>
                     <div class="form-radio">
-                        <legend>Gender:</legend>
+                        <legend>* Gender:</legend>
                         <div class="form-radio-sub">
                             <div>
                                 <input name="gender" id="male" value="male" type="radio">
@@ -82,27 +79,32 @@
             </form>
             <canvas id="canvas" style="display:none;"></canvas>
             <h2>Currently Registered:</h2>
-            <div id="petBoxes" class="pets-grid">
-                
-                <!--<div class="pet-box">
-                    <h3 id="petName">Luna Borfuna</h3>
-                    <div class="center-img">
-                        <img class="pet-img" src="./img/Luna.jpg" alt="">
-                    </div>
-                    <h4 id="petService">Nail Trim</h4>
-                    <div class="details-grid">
-                        <p>Age:</p>
-                        <p id="petAge">3</p>
-                        <p>Gender:</p>
-                        <p id="petGender">Female</p>
-                        <p>Breed:</p>
-                        <p id="petBreed">Golden Mountain</p>
-                    </div>    
-                </div>-->
-            </div>
-        </div>    
+            <div id="petBoxes" class="pets-grid"></div>
+        </div>
     </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="contact">
+                <h4>Contact Us:</h4>
+                <p>(999)-999-9999</p>
+                <p>customerservice@petsalon.com</p>
+            </div>
+            <div class="established">
+                <h3>Pet Salon | Est. 2024</h3>
+            </div>
+            <div class="follow">
+                <h4>Follow us!</h4>
+                <div class="icons">
+                    <i class="fa-brands fa-facebook"></i>   
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-youtube"></i>  
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="./plugins/jquery.js"></script>
     <script type="module" src="./scripts/register.js"></script>
     <script type="module" src="./scripts/admin.js"></script>
+    <script src="./scripts/services.js"></script>
 </body>
 </html>
