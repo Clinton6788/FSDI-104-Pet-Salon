@@ -130,13 +130,12 @@ export function petsDisplay() {
 
 //Pre-loaded pets
 export function startingPets() {
-    const defaultPets = [
-        new Pet("Frank Lee", 1, "Male", "Bernedoodle", "Grooming", "Dog", "./img/Frank.jpg"),
-        new Pet("Luna Borfuna", 3, "Female", "Golden Mountain", "Nail Trim", "Dog", "./img/Luna.jpg"),
-        new Pet("Chloe Cat", 7, "Female", "Shorthair", "Bath", "Cat", "./img/Chloe.jpg"),
-        new Pet("Freyja the Butt", 3, "Female", "Shorthair", "Attitude Adjustment", "Cat", "./img/Freyja.jpg")
-    ];
-    pets.push(...defaultPets);
+    pets.push(new Pet("Frank Lee", 1, "Male", "Bernedoodle", "Grooming", "Dog", "./img/Frank.jpg"),
+    new Pet("Luna Borfuna", 3, "Female", "Golden Mountain", "Nail Trim", "Dog", "./img/Luna.jpg"),
+    new Pet("Chloe Cat", 7, "Female", "Shorthair", "Bath", "Cat", "./img/Chloe.jpg"),
+    new Pet("Freyja the Butt", 3, "Female", "Shorthair", "Attitude Adjustment", "Cat", "./img/Freyja.jpg")
+);
+    savePetsToLocalStorage(pets);
 }
 
 

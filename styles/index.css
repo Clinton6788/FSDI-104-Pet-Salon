@@ -24,7 +24,11 @@ h3{
     text-align: center;
     /*Notes*/
 }
-
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 /*Header*/
 
 header{
